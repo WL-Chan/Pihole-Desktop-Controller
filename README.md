@@ -70,9 +70,6 @@ sudo apt update
 sudo apt install sqlite3
 ```
 
-Many Raspberry Pi OS images include SQLite3 already.  
-VM installations often do not.
-
 ---
 
 ### 2. Configure sudo permissions (if your OS requires it)
@@ -97,10 +94,19 @@ You must place the following two lines **directly above** the includedir entry:
 ```
 username ALL=(ALL) NOPASSWD: /usr/local/bin/pihole
 username ALL=(ALL) NOPASSWD: /usr/bin/sqlite3
-#includedir /etc/sudoers.d
 ```
 
 Replace `username` with your actual Linux username.
+
+After adding the two permission lines, your sudoers file should resemble the example below:
+
+```
+username ALL=(ALL) NOPASSWD: /usr/local/bin/pihole
+username ALL=(ALL) NOPASSWD: /usr/bin/sqlite3
+#includedir /etc/sudoers.d
+
+@includedir /etc/sudoers.d
+```
 
 If these rules are missing or placed incorrectly, the controller will not be able to read Pi-hole status or statistics.
 
