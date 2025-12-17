@@ -34,45 +34,6 @@ You can download the fully compiled application from the Releases section.
 
 ---
 
-## Purpose of This Repository
-
-This repository provides the communication layer of the application, allowing developers to understand how Pi-hole can be controlled through SSH.
-
-The source code here covers:
-
-- Creating and managing SSH connections  
-- Running Pi-hole commands  
-- Enabling and disabling Pi-hole  
-- Executing custom Linux commands  
-
-All other parts of the application remain private.
-
----
-
-## Included Source Code
-
-### 1. SSH Connection Manager  
-**Location:**  
-```
-Source/Connection/SshConnectionManager.cs
-```
-
-This class manages connection settings, opens and closes SSH sessions, and executes commands.
-
-### 2. Pi-hole Command Helper  
-**Location:**  
-```
-Source/Commands/SshCommands.cs
-```
-
-This class provides simple methods for:
-
-- Enabling Pi-hole  
-- Disabling Pi-hole for a chosen duration  
-- Running custom commands  
-
----
-
 ## Preparing Your Pi-hole System
 
 The desktop controller requires a few things to be configured on your Pi-hole device.  
@@ -136,6 +97,46 @@ username ALL=(ALL) NOPASSWD: /usr/bin/sqlite3
 ```
 
 If these rules are missing or placed incorrectly, the controller will not be able to read Pi-hole status or statistics.
+
+
+---
+
+## Purpose of This Repository
+
+This repository provides the communication layer of the application, allowing developers to understand how Pi-hole can be controlled through SSH.
+
+The source code here covers:
+
+- Creating and managing SSH connections  
+- Running Pi-hole commands  
+- Enabling and disabling Pi-hole  
+- Executing custom Linux commands  
+
+All other parts of the application remain private.
+
+---
+
+## Included Source Code
+
+### 1. SSH Connection Manager  
+**Location:**  
+```
+Source/Connection/SshConnectionManager.cs
+```
+
+This class manages connection settings, opens and closes SSH sessions, and executes commands.
+
+### 2. Pi-hole Command Helper  
+**Location:**  
+```
+Source/Commands/SshCommands.cs
+```
+
+This class provides simple methods for:
+
+- Enabling Pi-hole  
+- Disabling Pi-hole for a chosen duration  
+- Running custom commands  
 
 ---
 
