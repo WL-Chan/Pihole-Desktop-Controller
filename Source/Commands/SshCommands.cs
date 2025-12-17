@@ -1,48 +1,43 @@
 using System;
-using Renci.SshNet;
 
 namespace PiholeController.Public
 {
-    public class SshConnectionManager : IDisposable
+    /// <summary>
+    /// Example Pi-hole command wrapper.
+    /// This class demonstrates how SSH commands can be sent to Pi-hole.
+    /// It is intentionally minimal and does NOT represent the full app logic.
+    /// </summary>
+    public class SshCommands
     {
-        private SshClient _client;
-        private ConnectionInfo _connectionInfo;
+        private readonly SshConnectionManager _ssh;
 
-        public bool IsConnected => _client?.IsConnected ?? false;
-
-        public void Configure(string host, int port, string username, string password)
+        public SshCommands(SshConnectionManager ssh)
         {
-            var auth = new PasswordAuthenticationMethod(username, password);
-            _connectionInfo = new ConnectionInfo(host, port, username, auth);
+            _ssh = ssh ?? throw new ArgumentNullException(nameof(ssh));
+        }
+        public string GetStatus()
+        {
+            return _ssh.RunCommand("pihole status");
+        }
+        public void Enable()
+        {
+            _ssh.RunCommand("sudo pihole enable");
         }
 
-        public void Connect()
+        public void Disable()
         {
-            if (_connectionInfo == null)
-                throw new InvalidOperationException("Connection not configured.");
-
-            _client = new SshClient(_connectionInfo);
-            _client.Connect();
+            _ssh.RunCommand("sudo pihole disable");
         }
-
-        public string RunCommand(string command)
+        public void ReloadDns()
         {
-            if (!IsConnected)
-                throw new InvalidOperationException("SSH is not connected.");
-
-            var result = _client.RunCommand(command);
-            return result.Result;
+            _ssh.RunCommand("sudo pihole reloaddns");
         }
-
-        public void Disconnect()
+        public string RunRaw(string command)
         {
-            if (_client != null && _client.IsConnected)
-                _client.Disconnect();
-        }
+            if (string.IsNullOrWhiteSpace(command))
+                throw new ArgumentException("Command cannot be empty.");
 
-        public void Dispose()
-        {
-            try { _client?.Dispose(); } catch { }
+            return _ssh.RunCommand(command);
         }
     }
 }
