@@ -21,6 +21,7 @@
 
 ### Pause Ad Blocking
 ![Pause Blocking](screenshots/Pause-Ad-Blocking.png)
+</details>
 
 
 # Pi-hole Desktop Controller (Partial Open Source Release)
