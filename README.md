@@ -1,3 +1,27 @@
+## Screenshots
+
+### Login Page
+![Login Page](screenshots/Login-Page.png)
+
+### Main Dashboard 1
+![Main Dashboard 1](screenshots/No-Info.png)
+
+### Main Dashboard 2 
+![Main Dashboard 2](screenshots/Main-Window-Enable.png)
+
+### Main Dashboard 3
+![Main Dashboard 3](screenshots/Main-Window-Disable.png)
+
+### Domain Management
+![Domain Management](screenshots/Domains-Management.png)
+
+### Gravity Update
+![Gravity Update](screenshots/Gravity-Update.png)
+
+### Pause Ad Blocking
+![Pause Blocking](screenshots/Pause-Ad-Blocking.png)
+
+
 # Pi-hole Desktop Controller (Partial Open Source Release)
 Download Latest Build:
 https://github.com/WL-Chan/Pihole-Desktop-Controller/releases/download/latest/PiholeDesktopController.zip
