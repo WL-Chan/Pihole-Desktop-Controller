@@ -1,4 +1,5 @@
-## Screenshots
+<details>
+<summary>📸 Screenshots</summary>
 
 ### Login Page
 ![Login Page](screenshots/Login-Page.png)
